@@ -1,6 +1,6 @@
 package characters;
 
-public class Character {
+public abstract class Character {
     int health;
     int attack;
 
@@ -10,6 +10,13 @@ public class Character {
     }
 
     public void displayInfo(){
-        System.out.println("Health: %d \n Attack: %d".formatted(health, attack));
+        System.out.println("HP: %d \n Attack: %d".formatted(health, attack));
     }
+
+    public void attack(Character character){
+        character.health -= attack;
+        System.out.println("HP: " + health);
+    };
+    public abstract void flee();
+
 }

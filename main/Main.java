@@ -2,13 +2,29 @@ package main;
 import characters.*;
 import characters.Character;
 import java.util.Scanner;
+import story.*;
 
 public class Main{
 public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
 
-    gameSelection();
-    int select = scan.nextInt();
+    charSelection(scan);
+    gameIntro();
+    gameLoop(scan);
+
+    System.out.println("Something");
+}
+/* */
+/* */
+/* */
+/* */
+/* */
+/* */
+//Outside Main methods
+public static void charSelection(Scanner scan){
+    
+    System.out.println( "-----Choose your Hero----- \n       [1] Knight \n       [2] Mage");
+    int select = scan.nextInt();    //User input Selection
 
     switch(select){
         case 1: System.out.println("You have chosen the Noble Knight");
@@ -19,24 +35,32 @@ public static void main(String[] args){
                 break;
         default: System.out.println("Not in Selection");
     }
-
-    gameIntro();
-    System.out.println("Something");
-}
-
-public static void gameSelection(){
-    System.out.println(
-        "-----Choose your Hero----- \n       [1] Knight \n       [2] Mage"
-    );
+    scan.nextLine();
 }
 
 public static void gameIntro(){
     System.out.println("""
-                        \n         Welcome Hero! to The Path of texts \n
-                        Where each decisions will lead to unknown destinations
-                        And be warned for each choice will be your last...
-                                       Goodluck Hero!""");
+        \n\n----------------------------------------------------------
+                    Welcome Hero! to The Path of Texts \n
+            Where each decisions will lead to unknown destinations
+            And be warned for each choice will be your last...
+                            Goodluck Hero!\n
+        ----------------------------------------------------------\n\n""");
 
+}
+
+public static void gameLoop(Scanner scan){
+    MainStory story = new MainStory();
+    
+    story.castleGateOut();
+    String choice = scan.nextLine();
+    if(choice.equalsIgnoreCase("A")){
+        story.roadLeft();
+    }else if(choice.equalsIgnoreCase("B")){
+        story.roadRight();
+    }else{
+        System.out.print("Are u stupid?");
+    }
 }
 
 }

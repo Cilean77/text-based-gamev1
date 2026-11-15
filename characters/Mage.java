@@ -6,8 +6,17 @@ public class Mage extends Character{
         super(health, attack);
     }
 
+    public void castSpell(){
+        System.out.println("Casted Spell!");
+    }
+
     @Override
     public void displayInfo(){
-        System.out.println("Mage \n Health: %d \n Attack: %d".formatted(health, attack));
+        System.out.println("Mage \n HP: %d \n Attack: %d".formatted(health, attack));
+    }
+    
+    @Override  
+    public void flee(){
+
     }
 }
