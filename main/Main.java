@@ -7,10 +7,12 @@ import story.*;
 public class Main{
 public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
-
-    charSelection(scan);
-    gameIntro();
-    gameLoopOne(scan);
+    Character goblin = new Goblin("goblin", 45, 20 );  //goblin enemy obj
+    
+    
+    Character player = charSelection(scan);  //main player obj stored
+    gameIntro(player.getName());
+    gameLoopOne(scan, player, goblin);
 
 }
 /* */
@@ -20,35 +22,39 @@ public static void main(String[] args){
 /* */
 /* */
 //Outside Main methods
-public static void charSelection(Scanner scan){
+public static Character charSelection(Scanner scan){    //selection
     
     System.out.println( "-----Choose your Hero----- \n       [1] Knight \n       [2] Mage");
     int select = scan.nextInt();    //User input Selection
+    scan.nextLine();  //buffer fix
+    Character hero = null;
+    System.out.println("Enter player name: ");
+    String name = scan.nextLine();  //User input Player name
 
     switch(select){
         case 1: System.out.println("You have chosen the Noble Knight");
-                Character Knight = new Knight(100, 40);
+                hero = new Knight(name, 100, 40);
                 break;
         case 2: System.out.println("You have chosen the White Mage");
-                Character Mage = new Mage(90, 45);
+                hero = new Mage(name, 90, 45);
                 break;
         default: System.out.println("Not in Selection");
     }
-    scan.nextLine();
+    return hero;
 }
 
-public static void gameIntro(){
+public static void gameIntro(String playerName){    //intro
     System.out.println("""
         \n\n----------------------------------------------------------
-                    Welcome Hero! to The Path of Texts \n
+                    Welcome Hero %s! to The Path of Texts \n
             Where each decisions will lead to unknown destinations
             And be warned for each choice will be your last...
                             Goodluck Hero!\n
-        ----------------------------------------------------------\n\n""");
+        ----------------------------------------------------------\n\n""".formatted(playerName));
 
 }
 
-public static void gameLoopOne(Scanner scan){
+public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
     MainStory story = new MainStory();
     
     story.castleGateOut();
@@ -70,14 +76,15 @@ public static void gameLoopOne(Scanner scan){
         while(true){ 
         choice = scan.nextLine();
         if(choice.equalsIgnoreCase("A")){
-            story.roadLeft();
+            hero.attack(goblin);
+            goblin.displayInfo();
             break;
-        }else if(choice.equalsIgnoreCase("B")){
-            story.roadRight();
+        }else if(choice.equalsIgnoreCase("F")){
+            hero.flee();
             break;
         }else{
-            System.out.print("Choose a path--");
+            System.out.print(" Would you attack or flee--");
     }
-
+}
 }
 }

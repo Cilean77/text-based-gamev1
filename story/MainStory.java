@@ -27,8 +27,8 @@ public class MainStory implements Rooms,Routes{
     @Override
     public void goblinEncounter(){
         System.out.println("""
-          \nAs you follow along You have encountered a goblin, prepare!
-                      Would you attack or flee? [A] [F]""");
+          \nAs you follow along the road You have encountered a goblin, prepare!
+                        Would you attack or flee? [A] [F]""");
     }
 
     //Rooms

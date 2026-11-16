@@ -2,8 +2,8 @@ package characters;
 
 public class Mage extends Character{
     
-     public Mage(int health, int attack){
-        super(health, attack);
+     public Mage(String name, int health, int attack){
+        super(name, health, attack);
     }
 
     public void castSpell(){
@@ -12,11 +12,11 @@ public class Mage extends Character{
 
     @Override
     public void displayInfo(){
-        System.out.println("Mage \n HP: %d \n Attack: %d".formatted(health, attack));
+        System.out.println(getName() + "\n HP: %d \n Attack: %d".formatted(health, attack));
     }
     
     @Override  
     public void flee(){
-
+        System.out.println("You have fled...");
     }
 }
