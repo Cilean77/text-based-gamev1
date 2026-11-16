@@ -18,11 +18,17 @@ public class MainStory implements Rooms,Routes{
         System.out.println("""
             You have chosen the right path.""");
     }
+    @Override
+    public void movingOn(){
+        System.out.println("As you kept waling a long a path ");
+    }
 
     //Encounters
     @Override
     public void goblinEncounter(){
-        System.out.println("You have encountered a goblin, prepare!");
+        System.out.println("""
+          \nAs you follow along You have encountered a goblin, prepare!
+                      Would you attack or flee? [A] [F]""");
     }
 
     //Rooms

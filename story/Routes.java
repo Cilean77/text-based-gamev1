@@ -9,4 +9,6 @@ public interface Routes {
      public void roadRight();
 
      public void goblinEncounter();
+
+     public void movingOn();
 }

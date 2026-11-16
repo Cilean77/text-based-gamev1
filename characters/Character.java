@@ -17,6 +17,7 @@ public abstract class Character {
         character.health -= attack;
         System.out.println("HP: " + health);
     };
+    
     public abstract void flee();
 
 }

@@ -10,9 +10,8 @@ public static void main(String[] args){
 
     charSelection(scan);
     gameIntro();
-    gameLoop(scan);
+    gameLoopOne(scan);
 
-    System.out.println("Something");
 }
 /* */
 /* */
@@ -49,18 +48,36 @@ public static void gameIntro(){
 
 }
 
-public static void gameLoop(Scanner scan){
+public static void gameLoopOne(Scanner scan){
     MainStory story = new MainStory();
     
     story.castleGateOut();
-    String choice = scan.nextLine();
-    if(choice.equalsIgnoreCase("A")){
-        story.roadLeft();
-    }else if(choice.equalsIgnoreCase("B")){
-        story.roadRight();
-    }else{
-        System.out.print("Are u stupid?");
+    String choice = null;
+    while(true){
+        choice = scan.nextLine();
+        if(choice.equalsIgnoreCase("A")){
+            story.roadLeft();
+            break;
+        }else if(choice.equalsIgnoreCase("B")){
+            story.roadRight();
+            break;
+        }else{
+            System.out.print("Choose a path--");
     }
 }
+ 
+    story.goblinEncounter();              //UPDATE this storyline
+        while(true){ 
+        choice = scan.nextLine();
+        if(choice.equalsIgnoreCase("A")){
+            story.roadLeft();
+            break;
+        }else if(choice.equalsIgnoreCase("B")){
+            story.roadRight();
+            break;
+        }else{
+            System.out.print("Choose a path--");
+    }
 
+}
 }
