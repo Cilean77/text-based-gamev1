@@ -7,7 +7,7 @@ import story.*;
 public class Main{
 public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
-    Character goblin = new Goblin("goblin", 45, 20 );  //goblin enemy obj
+    Character goblin = new Goblin("goblin", 45, 20, 10);  //goblin enemy obj
     
     
     Character player = charSelection(scan);  //main player obj stored
@@ -33,10 +33,10 @@ public static Character charSelection(Scanner scan){    //selection
 
     switch(select){
         case 1: System.out.println("You have chosen the Noble Knight");
-                hero = new Knight(name, 100, 40);
+                hero = new Knight(name, 100, 40, 0);
                 break;
         case 2: System.out.println("You have chosen the White Mage");
-                hero = new Mage(name, 90, 45);
+                hero = new Mage(name, 90, 45, 0);
                 break;
         default: System.out.println("Not in Selection");
     }
@@ -57,34 +57,43 @@ public static void gameIntro(String playerName){    //intro
 public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
     MainStory story = new MainStory();
     
-    story.castleGateOut();
+    story.castleGateOut();                 //scene1
     String choice = null;
-    while(true){
-        choice = scan.nextLine();
-        if(choice.equalsIgnoreCase("A")){
-            story.roadLeft();
-            break;
-        }else if(choice.equalsIgnoreCase("B")){
-            story.roadRight();
-            break;
-        }else{
-            System.out.print("Choose a path--");
+        while(true){
+            choice = scan.nextLine();
+            if(choice.equalsIgnoreCase("A")){
+                story.roadLeft();
+                break;
+            }else if(choice.equalsIgnoreCase("B")){
+                story.roadRight();
+                break;
+            }else{
+                System.out.print("Choose a path--");
     }
 }
  
-    story.goblinEncounter();              //UPDATE this storyline
-        while(true){ 
-        choice = scan.nextLine();
-        if(choice.equalsIgnoreCase("A")){
-            hero.attack(goblin);
-            goblin.displayInfo();
-            break;
-        }else if(choice.equalsIgnoreCase("F")){
-            hero.flee();
-            break;
-        }else{
-            System.out.print(" Would you attack or flee--");
+    story.goblinEncounter();              //scene 2
+            while(true){ 
+            choice = scan.nextLine();
+            if(choice.equalsIgnoreCase("A")){
+                hero.attack(goblin);
+                goblin.displayInfo();
+                goblin.attack(hero);
+                hero.displayInfo();
+                    if(goblin.health <= 0){
+                        story.enemySlain();
+                        hero.experience++;
+                        break;
+                    }
+            }else if(choice.equalsIgnoreCase("F")){
+                hero.flee();
+                break;
+            }else{
+                System.out.print("Would you attack or flee--");
+        } 
     }
+
+    System.out.println("XP Level: " + hero.experience);
 }
 }
-}
+

@@ -30,6 +30,10 @@ public class MainStory implements Rooms,Routes{
           \nAs you follow along the road You have encountered a goblin, prepare!
                         Would you attack or flee? [A] [F]""");
     }
+    @Override
+    public void enemySlain(){
+        System.out.println("You have slain the enemy");
+    }
 
     //Rooms
     @Override

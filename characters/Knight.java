@@ -2,13 +2,13 @@ package characters;
 
 public class Knight extends Character {
     
-     public Knight(String name, int health, int attack){
-        super(name, health, attack);
+     public Knight(String name, int health, int attack, int experience){
+        super(name, health, attack, experience);
     }
 
     @Override
     public void displayInfo(){
-        System.out.println(getName() + "\n HP: %d \n Attack: %d".formatted(health, attack));
+        System.out.println(getName() + "\nHP: %d \nAttack: %d".formatted(health, attack));
     }
 
     @Override  

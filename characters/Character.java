@@ -2,13 +2,15 @@ package characters;
 
 public abstract class Character {
     private String name;
-    int health;
+    public int health;
     int attack;
+    public int experience;
 
-    public Character(String name, int health, int attack){
+    public Character(String name, int health, int attack, int experience){
         this.name = name;
         this.health = health;
         this.attack = attack;
+        this.experience = experience;
     }
 
     public abstract void displayInfo();
@@ -16,7 +18,6 @@ public abstract class Character {
 
     public void attack(Character character){
         character.health -= attack;
-        System.out.println("HP: " + health);
     };
 
     public String getName(){
