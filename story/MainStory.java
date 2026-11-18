@@ -2,6 +2,8 @@ package story;
 
 public class MainStory implements Rooms,Routes{
     
+
+    //Placement
     @Override
     public void castleGateOut(){
         System.out.println("""
@@ -20,7 +22,9 @@ public class MainStory implements Rooms,Routes{
     }
     @Override
     public void movingOn(){
-        System.out.println("As you kept waling a long a path ");
+        System.out.println("""
+            As you kept walking a along the path you 
+            again stumble on 2 paths. Which path do you choose? [A]Left [B]Right""");
     }
 
     //Encounters
@@ -33,6 +37,12 @@ public class MainStory implements Rooms,Routes{
     @Override
     public void enemySlain(){
         System.out.println("You have slain the enemy");
+    }
+    @Override
+    public void merchantEncounter(){
+        System.out.println("""
+            You have stumbled on a merchant down the road
+            """);
     }
 
     //Rooms

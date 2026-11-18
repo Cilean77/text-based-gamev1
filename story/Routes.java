@@ -14,6 +14,8 @@ public interface Routes {
 
      public void enemySlain();
 
+     public void merchantEncounter();
+
      //Journey
      public void movingOn();
 }

@@ -1,6 +1,7 @@
 package characters;
 
 public abstract class Character {
+
     private String name;
     public int health;
     int attack;

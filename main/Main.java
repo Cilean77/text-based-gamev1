@@ -7,12 +7,14 @@ import story.*;
 public class Main{
 public static void main(String[] args){
     Scanner scan = new Scanner(System.in);
+    MainStory story = new MainStory();
     Character goblin = new Goblin("goblin", 45, 20, 10);  //goblin enemy obj
+    String choice = null;
     
     
     Character player = charSelection(scan);  //main player obj stored
     gameIntro(player.getName());
-    gameLoopOne(scan, player, goblin);
+    gameLoopOne(scan, story, player, goblin, choice);
 
 }
 /* */
@@ -54,12 +56,8 @@ public static void gameIntro(String playerName){    //intro
 
 }
 
-public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
-    MainStory story = new MainStory();
-    
-    story.castleGateOut();                 //scene1
-    String choice = null;
-        while(true){
+public static void path(Scanner scan, String choice, MainStory story){
+    while(true){
             choice = scan.nextLine();
             if(choice.equalsIgnoreCase("A")){
                 story.roadLeft();
@@ -72,6 +70,13 @@ public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
     }
 }
  
+}
+
+public static void gameLoopOne(Scanner scan, MainStory story, Character hero, Character goblin, String choice){
+    
+    story.castleGateOut();                //scene1
+    path(scan, choice, story);
+        
     story.goblinEncounter();              //scene 2
             while(true){ 
             choice = scan.nextLine();
@@ -82,7 +87,7 @@ public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
                 hero.displayInfo();
                     if(goblin.health <= 0){
                         story.enemySlain();
-                        hero.experience++;
+                        hero.experience += goblin.experience;
                         break;
                     }
             }else if(choice.equalsIgnoreCase("F")){
@@ -93,7 +98,13 @@ public static void gameLoopOne(Scanner scan, Character hero, Character goblin){
         } 
     }
 
-    System.out.println("XP Level: " + hero.experience);
+    System.out.println("Gained XP! \n XP Level: " + hero.experience);
+
+    story.movingOn();
+    path(scan, choice, story);         //scene 3
+
+    
 }
 }
+
 
