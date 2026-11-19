@@ -8,7 +8,7 @@ public class Knight extends Character {
 
     @Override
     public void displayInfo(){
-        System.out.println(getName() + "\nHP: %d \nAttack: %d".formatted(health, attack));
+        super.displayInfo();
     }
 
     @Override  

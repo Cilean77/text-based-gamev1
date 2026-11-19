@@ -12,7 +12,7 @@ public class Mage extends Character{
 
     @Override
     public void displayInfo(){
-        System.out.println(getName() + "\n HP: %d \n Attack: %d".formatted(health, attack));
+        super.displayInfo();
     }
     
     @Override  

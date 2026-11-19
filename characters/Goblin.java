@@ -8,9 +8,9 @@ public class Goblin extends Character{
 
     @Override
     public void displayInfo(){
-        System.out.println("Goblin \nHP: %d \nAttack: %d".formatted(health, attack));
+        super.displayInfo();
     }
-
+    
     @Override  
     public void flee(){
 

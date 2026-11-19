@@ -98,7 +98,7 @@ public static void gameLoopOne(Scanner scan, MainStory story, Character hero, Ch
         } 
     }
 
-    System.out.println("Gained XP! \n XP Level: " + hero.experience);
+    System.out.println("Gained XP! \nXP Level: " + hero.experience);
 
     story.movingOn();
     path(scan, choice, story);         //scene 3
